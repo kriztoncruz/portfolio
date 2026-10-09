@@ -123,3 +123,8 @@ body{isolation:isolate}
 .ambient-background::before{content:"";position:absolute;inset:-15%;background:radial-gradient(ellipse at 12% 24%,rgb(172 215 185 / .085),transparent 48%),radial-gradient(ellipse at 88% 78%,rgb(111 158 129 / .065),transparent 46%);transform:translate3d(-2%,1%,0)}
 @media(prefers-reduced-motion:no-preference){.ambient-background::before{animation:ambient-drift 38s ease-in-out infinite alternate}@keyframes ambient-drift{from{transform:translate3d(-2%,1%,0)}to{transform:translate3d(3%,-3%,0)}}}
 .background-paused .ambient-background::before{animation-play-state:paused}
+
+/* Keep the ambient wash continuous at the top; use a full-width backplate when sticky. */
+.site-header{background:transparent}
+.site-header::before{content:"";position:absolute;inset:0;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax);z-index:-1;opacity:0;pointer-events:none;transition:opacity .2s ease}
+.site-header.is-scrolled::before{opacity:1}

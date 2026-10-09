@@ -40,8 +40,18 @@ motionPreference.addEventListener('change', () => {
   deletingWord = true;
   scheduleTyping();
 });
-function syncPageVisibility() {
+function resumeTyping() {
+  // Returning to the page should not leave the headline sitting on an empty word.
+  if (typingLength === 0) {
+    typingLength = typingWords[typingIndex].length;
+    typedWord.textContent = typingWords[typingIndex];
+    deletingWord = true;
+  }
   scheduleTyping();
+}
+function syncPageVisibility() {
+  if (document.hidden) clearTimeout(typingTimer);
+  else resumeTyping();
   document.body.classList.toggle('background-paused', document.hidden);
 }
 document.addEventListener('visibilitychange', syncPageVisibility);
@@ -49,7 +59,8 @@ syncPageVisibility();
 if ('IntersectionObserver' in window) {
   const heroObserver = new IntersectionObserver(entries => {
     heroVisible = entries[0].isIntersecting;
-    scheduleTyping();
+    if (heroVisible) resumeTyping();
+    else clearTimeout(typingTimer);
   });
   heroObserver.observe(document.querySelector('.hero'));
 }
@@ -139,6 +150,7 @@ const navLinks = [...document.querySelectorAll('.site-header nav a')];
 const navSections = navLinks.map(link => document.querySelector(link.getAttribute('href')));
 let navFramePending = false;
 function updateNavigation() {
+  document.querySelector('.site-header').classList.toggle('is-scrolled', window.scrollY > 8);
   const readingLine = document.querySelector('.site-header').offsetHeight + Math.min(window.innerHeight * 0.2, 140);
   let activeIndex = -1;
   navSections.forEach((section, index) => {
