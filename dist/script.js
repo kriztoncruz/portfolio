@@ -30,25 +30,67 @@ const status = work.querySelector('#work-status');
 const projectNames = ['DocTrack', 'HR Payslip System'];
 let currentProject = 0;
 
+const dotsContainer = work.querySelector('.project-dots');
+const dots = projects.map((project, index) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.className = 'project-dot';
+  dot.setAttribute('aria-label', 'Show ' + projectNames[index]);
+  dot.setAttribute('aria-controls', 'work-track');
+  dot.addEventListener('click', () => queueProject(index, index < currentProject ? 1 : -1));
+  dotsContainer.append(dot);
+  return dot;
+});
+let projectQueue = Promise.resolve();
 function resizeProject() {
-  viewport.style.height = `${projects[currentProject].offsetHeight}px`;
+  viewport.style.height = projects[currentProject].offsetHeight + 'px';
 }
-function showProject(index) {
-  currentProject = (index + projects.length) % projects.length;
-  projects.forEach((project, projectIndex) => {
-    const inactive = projectIndex !== currentProject;
+function updateProjectState() {
+  projects.forEach((project, index) => {
+    const inactive = index !== currentProject;
     project.inert = inactive;
     project.setAttribute('aria-hidden', String(inactive));
+    if (!inactive) project.querySelector('.project-details').classList.add('text-visible');
   });
-  track.style.transform = `translateX(-${currentProject * 100}%)`;
-  status.textContent = `${projectNames[currentProject]} · ${currentProject + 1} / ${projects.length}`;
+  dots.forEach((dot, index) => {
+    if (index === currentProject) dot.setAttribute('aria-current', 'true');
+    else dot.removeAttribute('aria-current');
+  });
+  status.textContent = projectNames[currentProject] + ' · ' + (currentProject + 1) + ' / ' + projects.length;
   resizeProject();
+}
+async function showProject(index, direction) {
+  const next = (index + projects.length) % projects.length;
+  if (next === currentProject) return;
+  const outgoing = projects[currentProject];
+  const incoming = projects[next];
+  incoming.hidden = false;
+  currentProject = next;
+  updateProjectState();
+  if (!motionPreference.matches) {
+    const options = { duration: 480, easing: 'cubic-bezier(.22,.68,0,1)' };
+    const animations = [
+      outgoing.animate([{transform:'translateX(0)'},{transform:'translateX(' + (direction * 100) + '%)'}], options),
+      incoming.animate([{transform:'translateX(' + (-direction * 100) + '%)'},{transform:'translateX(0)'}], options)
+    ];
+    await Promise.all(animations.map(animation => animation.finished.catch(() => {})));
+  }
+  outgoing.hidden = true;
+}
+function queueProject(index, direction) {
+  projectQueue = projectQueue.then(() => showProject(index, direction));
+}
+function stepProject(direction) {
+  // Resolve the target after earlier clicks finish; the slide direction never reverses at a wrap.
+  projectQueue = projectQueue.then(() => showProject(currentProject + (direction < 0 ? -1 : 1), direction));
 }
 work.classList.add('carousel-ready');
 controls.hidden = false;
-showProject(0);
-work.querySelector('#work-previous').addEventListener('click', () => showProject(currentProject - 1));
-work.querySelector('#work-next').addEventListener('click', () => showProject(currentProject + 1));
+dotsContainer.hidden = false;
+projects.forEach((project, index) => project.hidden = index !== currentProject);
+updateProjectState();
+work.querySelector('#work-previous').addEventListener('click', () => stepProject(-1));
+work.querySelector('#work-next').addEventListener('click', () => stepProject(1));
 if ('ResizeObserver' in window) {
   const projectResize = new ResizeObserver(resizeProject);
   projects.forEach(project => projectResize.observe(project));
