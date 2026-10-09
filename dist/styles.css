@@ -34,6 +34,6 @@
 @media(max-width:1024px){.experience-entry{gap:45px}}
 @media(max-width:767px){.experience-entry{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 0}.experience-role h3{font-size:20px;max-width:none}}
 @media(max-width:480px){.site-header{height:auto;min-height:78px;flex-wrap:wrap;gap:14px;padding:18px 0}nav{gap:18px}}
-.portrait-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.portrait-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 15%}
 footer a,footer button{min-height:44px;display:inline-flex;align-items:center}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
