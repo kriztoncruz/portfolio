@@ -31,3 +31,5 @@ The wordmark uses a brief, subtle glitch every three seconds. School logos revea
 The hero types and deletes meet, fulfilled, and to execute in a repeating cycle. Typing pauses while the hero or browser tab is hidden; reduced motion retains the original static heading.
 
 Scroll reveals, including the hero and the full education timeline with school logos, reset when they completely leave the viewport and replay on return. Reduced-motion preference changes immediately restore static readable content.
+
+A faint green background wash drifts on a 38-second alternate cycle behind the page. Its viewport wrapper clips overflow and ignores pointer input. It pauses in hidden tabs and remains static for reduced motion. No canvas or external animation dependency is needed.

@@ -116,3 +116,10 @@ h1 .hero-typed{color:inherit}
 .hero-copy.text-reveal,.portrait.text-reveal{transition-duration:.65s}
 .portrait.text-reveal{transition-delay:.13s}
 .timeline-animated:not(.timeline-started) .timeline-progress,.timeline-animated:not(.timeline-started) .timeline-milestone,.timeline-animated:not(.timeline-started) .school-logo,.timeline-animated:not(.timeline-started) .education-entry::before{transition:none}
+
+/* A quiet accent wash, clipped to the viewport and layered behind the content. */
+body{isolation:isolate}
+.ambient-background{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.ambient-background::before{content:"";position:absolute;inset:-15%;background:radial-gradient(ellipse at 12% 24%,rgb(172 215 185 / .085),transparent 48%),radial-gradient(ellipse at 88% 78%,rgb(111 158 129 / .065),transparent 46%);transform:translate3d(-2%,1%,0)}
+@media(prefers-reduced-motion:no-preference){.ambient-background::before{animation:ambient-drift 38s ease-in-out infinite alternate}@keyframes ambient-drift{from{transform:translate3d(-2%,1%,0)}to{transform:translate3d(3%,-3%,0)}}}
+.background-paused .ambient-background::before{animation-play-state:paused}

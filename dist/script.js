@@ -40,7 +40,12 @@ motionPreference.addEventListener('change', () => {
   deletingWord = true;
   scheduleTyping();
 });
-document.addEventListener('visibilitychange', () => scheduleTyping());
+function syncPageVisibility() {
+  scheduleTyping();
+  document.body.classList.toggle('background-paused', document.hidden);
+}
+document.addEventListener('visibilitychange', syncPageVisibility);
+syncPageVisibility();
 if ('IntersectionObserver' in window) {
   const heroObserver = new IntersectionObserver(entries => {
     heroVisible = entries[0].isIntersecting;
