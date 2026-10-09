@@ -41,6 +41,12 @@ html{scroll-padding-top:122px}
 .education{padding:48px 0}
 .education .section-heading{margin-bottom:26px}
 .education-list{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;list-style:none;margin:0;padding:0;max-width:800px}
+.education-layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:64px;align-items:start}
+.education-summary{border-left:1px solid var(--line);padding-left:32px;margin-top:3px}
+.education-summary .summary-label{font-family:Consolas,"Courier New",monospace;font-size:12px;color:var(--accent);margin-bottom:20px}
+.education-summary h3{font-size:28px;font-weight:500;line-height:1.2;letter-spacing:-.8px;margin-bottom:22px}
+.education-summary>p{font-size:14px;line-height:1.8;color:var(--muted);max-width:320px;margin-bottom:18px}
+@media(max-width:1024px){.education-layout{grid-template-columns:minmax(0,1fr);gap:32px}.education-summary{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.education-summary>p{max-width:560px}}
 .education-entry{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);gap:24px;min-width:0;padding-left:28px}
 .education-entry::before{content:"";position:absolute;top:5px;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);z-index:2}
 .education-entry::after{content:"";position:absolute;top:11px;bottom:-39px;left:5px;width:2px;background:var(--line)}
@@ -82,3 +88,11 @@ html{scroll-padding-top:122px}
 .carousel-ready .work-track{display:flex;align-items:flex-start;transition:transform .5s cubic-bezier(.22,.68,0,1)}
 .carousel-ready .project{flex:0 0 100%;min-width:0;margin:0;padding:0;border:0}
 @media(max-width:480px){.work-controls{justify-content:space-between;gap:8px}.work-controls p{min-width:0;flex:1;font-size:10px}.carousel-button{padding:0 12px}}
+nav .nav-contact{border-bottom:0}
+.site-header nav a{position:relative}
+.site-header nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.site-header nav a[aria-current="location"]{color:var(--accent)}
+.site-header nav a[aria-current="location"]::after{transform:scaleX(1)}
+.text-reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.text-reveal.text-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.text-reveal{opacity:1;transform:none}}

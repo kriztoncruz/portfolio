@@ -21,3 +21,5 @@ Work experience covers the current Administrative Officer role at the National P
 The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. When the timeline enters view, its connecting line fills through the four milestones in sequence, from top to bottom on all screen sizes. The animation runs once per visit and respects reduced-motion settings.
 
 The Work section uses Previous and Next buttons to loop through projects horizontally. Inactive slides are excluded from keyboard navigation. With JavaScript disabled, both projects and all education stages remain visible.
+
+The education summary fills the space beside the desktop timeline and moves below it on mobile. Text reveals animate once as content enters view and respect reduced-motion settings. The header underline follows the current section while scrolling, with services grouped under Work.

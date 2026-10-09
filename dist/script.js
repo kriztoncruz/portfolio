@@ -55,3 +55,51 @@ if ('ResizeObserver' in window) {
 } else {
   window.addEventListener('resize', resizeProject);
 }
+
+// Keep navigation aligned with the section currently passing below the header.
+const navLinks = [...document.querySelectorAll('.site-header nav a')];
+const navSections = navLinks.map(link => document.querySelector(link.getAttribute('href')));
+let navFramePending = false;
+function updateNavigation() {
+  const readingLine = document.querySelector('.site-header').offsetHeight + Math.min(window.innerHeight * 0.2, 140);
+  let activeIndex = -1;
+  navSections.forEach((section, index) => {
+    if (section.getBoundingClientRect().top <= readingLine) activeIndex = index;
+  });
+  if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) activeIndex = navLinks.length - 1;
+  navLinks.forEach((link, index) => {
+    if (index === activeIndex) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+  navFramePending = false;
+}
+window.addEventListener('scroll', () => {
+  if (!navFramePending) {
+    navFramePending = true;
+    requestAnimationFrame(updateNavigation);
+  }
+}, { passive: true });
+window.addEventListener('resize', updateNavigation);
+window.addEventListener('load', updateNavigation);
+updateNavigation();
+
+// Reveal content once, while retaining readable content without JavaScript.
+if (!motionPreference.matches && 'IntersectionObserver' in window) {
+  const revealTargets = [...document.querySelectorAll('.section-heading, .services-intro, .service-list article, .experience-entry, .education-summary, .about-label, .about > div, .contact h2, .contact-bottom, .project-details')];
+  const textObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.closest('[aria-hidden="true"]')) {
+        entry.target.classList.add('text-visible');
+        textObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealTargets.forEach(target => {
+    target.classList.add('text-reveal');
+    textObserver.observe(target);
+  });
+  motionPreference.addEventListener('change', () => {
+    revealTargets.forEach(target => target.classList.remove('text-reveal'));
+    textObserver.disconnect();
+  }, { once: true });
+}
