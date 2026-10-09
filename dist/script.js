@@ -85,7 +85,7 @@ updateNavigation();
 
 // Reveal content once, while retaining readable content without JavaScript.
 if (!motionPreference.matches && 'IntersectionObserver' in window) {
-  const revealTargets = [...document.querySelectorAll('.section-heading, .services-intro, .service-list article, .experience-entry, .about-label, .about > div, .contact h2, .contact-bottom, .project-details')];
+  const revealTargets = [...document.querySelectorAll('.section-heading, .services-intro, .service-list article, .experience-entry, .about-label, .about > div, .contact h2, .contact-bottom, .contact-links, .project-details')];
   const textObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.closest('[aria-hidden="true"]')) {
