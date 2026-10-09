@@ -26,4 +26,6 @@ Larger school logos sit to the right of their timeline entries on desktop and mo
 
 Contact icons: Tabler Icons 3.49.0 (MIT), vendored inline from the official @tabler/icons package. Viber uses the phone-call icon. License: dist/licenses/tabler-icons.txt. Icon-only links include accessible names and hover titles.
 
-The wordmark uses a brief, subtle glitch every seven seconds. School logos reveal in sync with their education timeline entries. Project arrows always move the slides in their indicated direction, including wraps; queued clicks stay ordered. Project count dots are generated from the project list and can select a project. Reduced motion disables both animations.
+The wordmark uses a brief, subtle glitch every three seconds. School logos reveal in sync with their education timeline entries. Project arrows always move the slides in their indicated direction, including wraps; queued clicks stay ordered. Project count dots are generated from the project list and can select a project. Reduced motion disables both animations.
+
+The hero types and deletes meet, fulfilled, and to execute in a repeating cycle. Typing pauses while the hero or browser tab is hidden; reduced motion retains the original static heading.

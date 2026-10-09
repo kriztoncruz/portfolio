@@ -1,6 +1,55 @@
 document.querySelector('#year').textContent = new Date().getFullYear();
 
 const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+// Type and delete the requested phrases without repeatedly announcing them to screen readers.
+const typedWord = document.querySelector('.hero-typed');
+const typingWords = ['meet', 'fulfilled', 'to execute'];
+let typingIndex = 0;
+let typingLength = typingWords[0].length;
+let deletingWord = true;
+let typingTimer;
+let heroVisible = true;
+function scheduleTyping(delay = 1400) {
+  clearTimeout(typingTimer);
+  if (!motionPreference.matches && !document.hidden && heroVisible) {
+    typedWord.classList.add('typing-active');
+    typingTimer = setTimeout(typeNextCharacter, delay);
+  }
+}
+function typeNextCharacter() {
+  const word = typingWords[typingIndex];
+  typingLength += deletingWord ? -1 : 1;
+  typedWord.textContent = word.slice(0, typingLength);
+  if (deletingWord && typingLength === 0) {
+    typingIndex = (typingIndex + 1) % typingWords.length;
+    deletingWord = false;
+    scheduleTyping(250);
+  } else if (!deletingWord && typingLength === word.length) {
+    deletingWord = true;
+    scheduleTyping(1600);
+  } else {
+    scheduleTyping(deletingWord ? 65 : 100);
+  }
+}
+motionPreference.addEventListener('change', () => {
+  clearTimeout(typingTimer);
+  typedWord.classList.remove('typing-active');
+  typedWord.textContent = typingWords[0];
+  typingIndex = 0;
+  typingLength = typingWords[0].length;
+  deletingWord = true;
+  scheduleTyping();
+});
+document.addEventListener('visibilitychange', () => scheduleTyping());
+if ('IntersectionObserver' in window) {
+  const heroObserver = new IntersectionObserver(entries => {
+    heroVisible = entries[0].isIntersecting;
+    scheduleTyping();
+  });
+  heroObserver.observe(document.querySelector('.hero'));
+}
+scheduleTyping();
+
 const education = document.querySelector('.education-list');
 const stages = [...education.querySelectorAll('.education-entry')];
 if (!motionPreference.matches && 'IntersectionObserver' in window) {

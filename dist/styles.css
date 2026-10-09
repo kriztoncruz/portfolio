@@ -94,7 +94,7 @@ html{scroll-padding-top:122px}
 .wordmark-glitch::before,.wordmark-glitch::after{content:attr(data-text);position:absolute;inset:0;opacity:0;pointer-events:none}
 .wordmark-glitch::before{color:var(--accent);clip-path:inset(0 0 55% 0)}
 .wordmark-glitch::after{color:var(--text);clip-path:inset(55% 0 0 0)}
-@media(prefers-reduced-motion:no-preference){.wordmark-glitch::before{animation:wordmark-glitch-top 7s steps(1,end) infinite}.wordmark-glitch::after{animation:wordmark-glitch-bottom 7s steps(1,end) infinite}@keyframes wordmark-glitch-top{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(-2px)}93%{opacity:1;transform:translateX(2px)}94%{opacity:1;transform:translateX(-1px)}95%{opacity:1;transform:translateX(1px)}}@keyframes wordmark-glitch-bottom{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(2px)}93%{opacity:1;transform:translateX(-1px)}94%{opacity:1;transform:translateX(1px)}95%{opacity:1;transform:translateX(-2px)}}}
+@media(prefers-reduced-motion:no-preference){.wordmark-glitch::before{animation:wordmark-glitch-top 3s steps(1,end) infinite}.wordmark-glitch::after{animation:wordmark-glitch-bottom 3s steps(1,end) infinite}@keyframes wordmark-glitch-top{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(-2px)}93%{opacity:1;transform:translateX(2px)}94%{opacity:1;transform:translateX(-1px)}95%{opacity:1;transform:translateX(1px)}}@keyframes wordmark-glitch-bottom{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(2px)}93%{opacity:1;transform:translateX(-1px)}94%{opacity:1;transform:translateX(1px)}95%{opacity:1;transform:translateX(-2px)}}}
 nav .nav-contact{border-bottom:0}
 .site-header nav a{position:relative}
 .site-header nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
@@ -108,3 +108,8 @@ nav .nav-contact{border-bottom:0}
 .contact-links a:hover{color:var(--accent);background:var(--panel)}
 .contact-links svg{width:27px;height:27px}
 @media(max-width:767px){.contact-links{align-self:flex-end}}
+
+h1 .hero-opening{display:block;white-space:nowrap;color:var(--text)}
+h1 .hero-typed{color:inherit}
+.hero-typed.typing-active::after{content:"";display:inline-block;width:2px;height:.78em;margin-left:5px;vertical-align:-.03em;background:var(--accent)}
+@media(prefers-reduced-motion:reduce){.hero-typed::after{display:none}}
