@@ -52,7 +52,6 @@ function resumeTyping() {
 function syncPageVisibility() {
   if (document.hidden) clearTimeout(typingTimer);
   else resumeTyping();
-  document.body.classList.toggle('background-paused', document.hidden);
 }
 document.addEventListener('visibilitychange', syncPageVisibility);
 syncPageVisibility();
@@ -150,7 +149,6 @@ const navLinks = [...document.querySelectorAll('.site-header nav a')];
 const navSections = navLinks.map(link => document.querySelector(link.getAttribute('href')));
 let navFramePending = false;
 function updateNavigation() {
-  document.querySelector('.site-header').classList.toggle('is-scrolled', window.scrollY > 8);
   const readingLine = document.querySelector('.site-header').offsetHeight + Math.min(window.innerHeight * 0.2, 140);
   let activeIndex = -1;
   navSections.forEach((section, index) => {

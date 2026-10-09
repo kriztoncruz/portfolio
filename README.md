@@ -32,6 +32,7 @@ The hero types and deletes meet, fulfilled, and to execute in a repeating cycle.
 
 Scroll reveals, including the hero and the full education timeline with school logos, reset when they completely leave the viewport and replay on return. Reduced-motion preference changes immediately restore static readable content.
 
-Three restrained green, teal, and olive gradient layers drift behind the page. Pointer movement and scroll position gently shift the field; taps, clicks, Enter, and Space create a soft bloom. Input handlers are passive and preserve normal scrolling. The response uses a settling animation frame loop, stops in hidden tabs, and disables interaction motion for reduced motion.
 
-The header is transparent at the top so the ambient background stays continuous. When scrolled, a full-width opaque backplate keeps navigation readable. Returning to the hero or a hidden tab restores a complete typed word if the loop was paused between phrases.
+The header uses a solid full-width dark background. Returning to the hero or a hidden tab restores a complete typed word if the loop was paused between phrases.
+
+The page background is the original solid dark color (#191e1a), with no gradient, glow, or pointer-reactive background animation.
