@@ -117,12 +117,19 @@ h1 .hero-typed{color:inherit}
 .portrait.text-reveal{transition-delay:.13s}
 .timeline-animated:not(.timeline-started) .timeline-progress,.timeline-animated:not(.timeline-started) .timeline-milestone,.timeline-animated:not(.timeline-started) .school-logo,.timeline-animated:not(.timeline-started) .education-entry::before{transition:none}
 
-/* A quiet accent wash, clipped to the viewport and layered behind the content. */
+/* Moving gradient layers remain decorative and never intercept input. */
 body{isolation:isolate}
 .ambient-background{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
-.ambient-background::before{content:"";position:absolute;inset:-15%;background:radial-gradient(ellipse at 12% 24%,rgb(172 215 185 / .085),transparent 48%),radial-gradient(ellipse at 88% 78%,rgb(111 158 129 / .065),transparent 46%);transform:translate3d(-2%,1%,0)}
-@media(prefers-reduced-motion:no-preference){.ambient-background::before{animation:ambient-drift 38s ease-in-out infinite alternate}@keyframes ambient-drift{from{transform:translate3d(-2%,1%,0)}to{transform:translate3d(3%,-3%,0)}}}
-.background-paused .ambient-background::before{animation-play-state:paused}
+.ambient-field{position:absolute;inset:-10%;will-change:transform}
+.ambient-orb{position:absolute;display:block;width:80vmax;height:80vmax;max-width:1250px;max-height:1250px;border-radius:50%;will-change:transform}
+.orb-mint{left:-22%;top:-34%;background:radial-gradient(circle,rgb(172 215 185 / .14),rgb(172 215 185 / .045) 35%,transparent 65%)}
+.orb-teal{right:-30%;top:10%;background:radial-gradient(circle,rgb(81 159 148 / .13),rgb(81 159 148 / .035) 36%,transparent 66%)}
+.orb-olive{left:20%;bottom:-58%;background:radial-gradient(circle,rgb(156 169 106 / .1),rgb(156 169 106 / .025) 35%,transparent 65%)}
+.ambient-response{position:absolute;left:0;top:0;width:min(75vmax,820px);height:min(75vmax,820px);opacity:0;will-change:transform,opacity}
+.ambient-bloom{display:block;width:100%;height:100%;background:radial-gradient(circle,rgb(172 215 185 / .11),rgb(87 151 139 / .035) 40%,transparent 67%)}
+@media(prefers-reduced-motion:no-preference){.orb-mint{animation:glow-float-a 24s ease-in-out infinite alternate}.orb-teal{animation:glow-float-b 31s ease-in-out infinite alternate}.orb-olive{animation:glow-float-a 38s ease-in-out infinite alternate-reverse}@keyframes glow-float-a{from{transform:translate3d(-3%,2%,0) scale(.95)}to{transform:translate3d(9%,7%,0) scale(1.12)}}@keyframes glow-float-b{from{transform:translate3d(4%,-5%,0) scale(1.08)}to{transform:translate3d(-9%,6%,0) scale(.92)}}}
+.background-paused .ambient-orb{animation-play-state:paused}
+@media(prefers-reduced-motion:reduce){.ambient-field{transform:none!important}.ambient-response{display:none}}
 
 /* Keep the ambient wash continuous at the top; use a full-width backplate when sticky. */
 .site-header{background:transparent}
