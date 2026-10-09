@@ -1,6 +1,6 @@
 import http from 'node:http';
 import { readFile } from 'node:fs/promises';
-const assets = new Map([['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']], ['/styles.css', ['styles.css', 'text/css']], ['/script.js', ['script.js', 'text/javascript']], ['/assets/krizton-cruz.jpg', ['assets/krizton-cruz.jpg', 'image/jpeg']]]);
+const assets = new Map([['/', ['index.html', 'text/html']], ['/index.html', ['index.html', 'text/html']], ['/styles.css', ['styles.css', 'text/css']], ['/script.js', ['script.js', 'text/javascript']], ['/assets/krizton-cruz.jpg', ['assets/krizton-cruz.jpg', 'image/jpeg']], ['/assets/ama-university.png', ['assets/ama-university.png', 'image/png']], ['/assets/don-bosco-tarlac.png', ['assets/don-bosco-tarlac.png', 'image/png']], ['/assets/great-eastern-institute.jpg', ['assets/great-eastern-institute.jpg', 'image/jpeg']]]);
 http.createServer(async (req, res) => {
   const asset = assets.get(new URL(req.url, 'http://localhost').pathname);
   if (!asset) { res.writeHead(404); res.end('Not found'); return; }
