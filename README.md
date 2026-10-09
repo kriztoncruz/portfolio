@@ -22,4 +22,4 @@ The education dates are calculated backward from the supplied 2024 college gradu
 
 The Work section uses Previous and Next buttons to loop through projects horizontally. Inactive slides are excluded from keyboard navigation. With JavaScript disabled, both projects and all education stages remain visible.
 
-The education summary fills the space beside the desktop timeline and moves below it on mobile. Text reveals animate once as content enters view and respect reduced-motion settings. The header underline follows the current section while scrolling, with services grouped under Work.
+Larger school logos sit to the right of their timeline entries on desktop and mobile. Text reveals animate once as content enters view and respect reduced-motion settings. The header underline follows the current section while scrolling, with services grouped under Work.
