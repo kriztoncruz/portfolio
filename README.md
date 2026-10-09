@@ -29,3 +29,5 @@ Contact icons: Tabler Icons 3.49.0 (MIT), vendored inline from the official @tab
 The wordmark uses a brief, subtle glitch every three seconds. School logos reveal in sync with their education timeline entries. Project arrows always move the slides in their indicated direction, including wraps; queued clicks stay ordered. Project count dots are generated from the project list and can select a project. Reduced motion disables both animations.
 
 The hero types and deletes meet, fulfilled, and to execute in a repeating cycle. Typing pauses while the hero or browser tab is hidden; reduced motion retains the original static heading.
+
+Scroll reveals, including the hero and the full education timeline with school logos, reset when they completely leave the viewport and replay on return. Reduced-motion preference changes immediately restore static readable content.

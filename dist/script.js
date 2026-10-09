@@ -52,24 +52,6 @@ scheduleTyping();
 
 const education = document.querySelector('.education-list');
 const stages = [...education.querySelectorAll('.education-entry')];
-if (!motionPreference.matches && 'IntersectionObserver' in window) {
-  education.classList.add('timeline-animated');
-  stages.forEach((stage, index) => stage.style.setProperty('--timeline-step', index));
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        education.classList.add('timeline-started');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05 });
-  observer.observe(education);
-  motionPreference.addEventListener('change', () => {
-    education.classList.remove('timeline-animated');
-    observer.disconnect();
-  }, { once: true });
-}
-
 const work = document.querySelector('#work');
 const track = work.querySelector('.work-track');
 const viewport = work.querySelector('.work-viewport');
@@ -174,23 +156,43 @@ window.addEventListener('resize', updateNavigation);
 window.addEventListener('load', updateNavigation);
 updateNavigation();
 
-// Reveal content once, while retaining readable content without JavaScript.
-if (!motionPreference.matches && 'IntersectionObserver' in window) {
-  const revealTargets = [...document.querySelectorAll('.section-heading, .services-intro, .service-list article, .experience-entry, .about-label, .about > div, .contact h2, .contact-bottom, .project-details')];
-  const textObserver = new IntersectionObserver(entries => {
+// Replay reveals after content fully leaves the viewport, avoiding flicker at an edge.
+const revealTargets = [...document.querySelectorAll('.hero-copy, .portrait, .section-heading, .services-intro, .service-list article, .experience-entry, .about-label, .about > div, .contact h2, .contact-bottom, .project-details')];
+let stopScrollAnimations = () => {};
+function setupScrollAnimations() {
+  stopScrollAnimations();
+  if (motionPreference.matches || !('IntersectionObserver' in window)) return;
+  education.classList.add('timeline-animated');
+  stages.forEach((stage, index) => stage.style.setProperty('--timeline-step', index));
+  const timelineObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.closest('[aria-hidden="true"]')) {
-        entry.target.classList.add('text-visible');
-        textObserver.unobserve(entry.target);
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.05) {
+        education.classList.add('timeline-started');
+      } else if (!entry.isIntersecting) {
+        education.classList.remove('timeline-started');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: [0, 0.05] });
+  timelineObserver.observe(education);
+  const textObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.1 && !entry.target.closest('[aria-hidden="true"]')) {
+        entry.target.classList.add('text-visible');
+      } else if (!entry.isIntersecting) {
+        entry.target.classList.remove('text-visible');
+      }
+    });
+  }, { threshold: [0, 0.1] });
   revealTargets.forEach(target => {
     target.classList.add('text-reveal');
     textObserver.observe(target);
   });
-  motionPreference.addEventListener('change', () => {
-    revealTargets.forEach(target => target.classList.remove('text-reveal'));
+  stopScrollAnimations = () => {
+    timelineObserver.disconnect();
     textObserver.disconnect();
-  }, { once: true });
+    education.classList.remove('timeline-animated', 'timeline-started');
+    revealTargets.forEach(target => target.classList.remove('text-reveal', 'text-visible'));
+  };
 }
+setupScrollAnimations();
+motionPreference.addEventListener('change', setupScrollAnimations);
