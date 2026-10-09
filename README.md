@@ -17,3 +17,7 @@ Includes a fixed dark theme, reduced-motion support, keyboard focus styles, sema
 School logos are stored locally in `dist/assets/` and displayed in their original colors. Sources: [AMA University and Colleges](https://ama.edu.ph/), [Don Bosco Tarlac official school seal](https://www.dbtarlac.edu.ph/about-us/the-seal-of-the-school), and [Great Eastern Institute's La Paz school page](https://www.facebook.com/GEIGenerals/). Education uses a compact timeline from elementary through college, with four separate stages. The timeline runs horizontally on desktop and vertically on smaller screens.
 
 Work experience covers the current Administrative Officer role at the National Privacy Commission, eLGU administration for the Local Government of La Paz, Tarlac, and an internship at the Department of Information and Communications Technology. Dates are omitted because they have not been provided.
+
+The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. Scroll reveals run once per visit and respect reduced-motion settings.
+
+The Work section uses Previous and Next buttons to loop through projects horizontally. Inactive slides are excluded from keyboard navigation. With JavaScript disabled, both projects and all education stages remain visible.
