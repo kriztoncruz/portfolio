@@ -14,6 +14,6 @@ Projects:
 
 Includes a fixed dark theme, reduced-motion support, keyboard focus styles, semantic navigation, metadata, and a custom favicon.
 
-School logos are stored locally in `dist/assets/` and displayed in their original colors. Sources: [AMA University and Colleges](https://ama.edu.ph/), [Don Bosco Tarlac official school seal](https://www.dbtarlac.edu.ph/about-us/the-seal-of-the-school), and [Great Eastern Institute's La Paz school page](https://www.facebook.com/GEIGenerals/). The same Don Bosco seal is used for both education entries.
+School logos are stored locally in `dist/assets/` and displayed in their original colors. Sources: [AMA University and Colleges](https://ama.edu.ph/), [Don Bosco Tarlac official school seal](https://www.dbtarlac.edu.ph/about-us/the-seal-of-the-school), and [Great Eastern Institute's La Paz school page](https://www.facebook.com/GEIGenerals/). Education uses a horizontal three-school layout on desktop, with the Don Bosco high school and senior high history combined. On smaller screens the schools stack vertically.
 
 Work experience covers the current Administrative Officer role at the National Privacy Commission, eLGU administration for the Local Government of La Paz, Tarlac, and an internship at the Department of Information and Communications Technology. Dates are omitted because they have not been provided.

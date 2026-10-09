@@ -38,19 +38,17 @@ footer a,footer button{min-height:44px;display:inline-flex;align-items:center}
 html{scroll-padding-top:122px}
 .site-header{position:sticky;top:0;z-index:10;background:var(--bg)}
 .skip-link{z-index:11}
-.education-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:90px;padding:28px 0;border-bottom:1px solid var(--line)}
-.education-entry:first-child{padding-top:0}
-.education-entry:last-child{padding-bottom:0;border-bottom:0}
+.education-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.education-entry{display:flex;flex-direction:column;min-width:0;gap:20px}
 .education-level{font-family:Consolas,"Courier New",monospace;font-size:12px;line-height:1.7;color:var(--accent);margin:0}
-.education-entry h3{font-size:22px;font-weight:500;letter-spacing:-.5px;line-height:1.35;margin:0 0 10px}
+.education-entry h3{font-size:20px;font-weight:500;letter-spacing:-.5px;line-height:1.35;margin:0 0 10px;max-width:320px}
 .education-entry div>p{font-size:14px;color:var(--muted);line-height:1.7;margin:0}
 .education-entry .education-detail{margin-top:4px}
-.education-school{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:start;min-width:0}
+.education-school{display:flex;flex-direction:column;gap:20px;min-width:0}
 .school-logo{display:block;width:96px;height:80px;object-fit:contain;padding:0;background:transparent}
 .education-copy{min-width:0}
-@media(max-width:480px){.education-school{grid-template-columns:80px minmax(0,1fr);gap:16px}.school-logo{width:80px;height:72px}}
-@media(max-width:1024px){.education-entry{gap:45px}}
-@media(max-width:767px){html{scroll-padding-top:102px}.education-entry{grid-template-columns:minmax(0,1fr);gap:12px}.education-entry h3{font-size:20px}nav{gap:16px;font-size:11px}}
+@media(max-width:1024px){.education-list{gap:28px}}
+@media(max-width:767px){html{scroll-padding-top:102px}.education-list{grid-template-columns:minmax(0,1fr);gap:28px}.education-entry{gap:14px;padding-bottom:28px;border-bottom:1px solid var(--line)}.education-entry:last-child{padding-bottom:0;border-bottom:0}.education-school{display:grid;grid-template-columns:80px minmax(0,1fr);gap:18px;align-items:start}.school-logo{width:80px;height:72px}.education-entry h3{max-width:none}nav{gap:16px;font-size:11px}}
 @media(max-width:480px){html{scroll-padding-top:150px}nav{flex-wrap:wrap;gap:8px 16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
