@@ -14,10 +14,10 @@ Projects:
 
 Includes a fixed dark theme, reduced-motion support, keyboard focus styles, semantic navigation, metadata, and a custom favicon.
 
-School logos are stored locally in `dist/assets/` and displayed in their original colors. Sources: [AMA University and Colleges](https://ama.edu.ph/), [Don Bosco Tarlac official school seal](https://www.dbtarlac.edu.ph/about-us/the-seal-of-the-school), and [Great Eastern Institute's La Paz school page](https://www.facebook.com/GEIGenerals/). Education uses a compact timeline from elementary through college, with four separate stages. The timeline runs horizontally on desktop and vertically on smaller screens.
+School logos are stored locally in `dist/assets/` and displayed in their original colors. Sources: [AMA University and Colleges](https://ama.edu.ph/), [Don Bosco Tarlac official school seal](https://www.dbtarlac.edu.ph/about-us/the-seal-of-the-school), and [Great Eastern Institute's La Paz school page](https://www.facebook.com/GEIGenerals/). Education uses a compact timeline from elementary through college, with four separate stages. The timeline runs vertically on all screen sizes.
 
 Work experience covers the current Administrative Officer role at the National Privacy Commission, eLGU administration for the Local Government of La Paz, Tarlac, and an internship at the Department of Information and Communications Technology. Dates are omitted because they have not been provided.
 
-The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. When the timeline enters view, its connecting line fills through the four milestones in sequence, from left to right on desktop and top to bottom on mobile. The animation runs once per visit and respects reduced-motion settings.
+The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. When the timeline enters view, its connecting line fills through the four milestones in sequence, from top to bottom on all screen sizes. The animation runs once per visit and respects reduced-motion settings.
 
 The Work section uses Previous and Next buttons to loop through projects horizontally. Inactive slides are excluded from keyboard navigation. With JavaScript disabled, both projects and all education stages remain visible.
