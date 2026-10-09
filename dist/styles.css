@@ -132,3 +132,12 @@ h1 .hero-typed{color:inherit}
 .motion-toggle[hidden],.motion-toggle span[hidden]{display:none}
 @media(max-width:640px){.flow-art{justify-content:flex-start;height:26px}}
 @media(prefers-reduced-motion:reduce){.flow-token,.motion-toggle{display:none}}
+
+/* A pointer-only spotlight; the base stays solid dark with no idle animation. */
+body{isolation:isolate}
+.pointer-layer{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.pointer-glow{position:absolute;left:0;top:0;width:min(600px,80vmax);height:min(600px,80vmax);opacity:0;transition:opacity .6s ease,transform .18s ease-out;will-change:transform,opacity}
+.pointer-glow span{display:block;width:100%;height:100%;background:radial-gradient(circle,rgb(172 215 185 / .11),rgb(172 215 185 / .035) 35%,transparent 68%);transition:transform .35s ease}
+.pointer-layer.pointer-visible .pointer-glow{opacity:1}
+.pointer-layer.pointer-pressed .pointer-glow span{transform:scale(1.12)}
+@media(prefers-reduced-motion:reduce){.pointer-layer{display:none}}

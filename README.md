@@ -38,3 +38,5 @@ The header uses a solid full-width dark background. Returning to the hero or a h
 The page background is the original solid dark color (#191e1a), with no gradient, glow, or pointer-reactive background animation.
 
 Project motion graphics adapt the HyperFrames motion vocabulary and shared motion principles to the live site using native Web Animations. A document travels through each real workflow stage, followed by a completion hold. Graphics run only for the visible active project, respect reduced motion, reset after leaving view, and have a manual pause control. The solid dark background is preserved. This is live HTML animation, not a rendered HyperFrames video.
+
+An optional pointer spotlight follows mouse/pen movement and briefly responds to touches or clicks, then fades when idle. It does not intercept gestures, stops for hidden tabs, and is disabled by reduced motion. There is no ambient background animation.
