@@ -18,6 +18,6 @@ School logos are stored locally in `dist/assets/` and displayed in their origina
 
 Work experience covers the current Administrative Officer role at the National Privacy Commission, eLGU administration for the Local Government of La Paz, Tarlac, and an internship at the Department of Information and Communications Technology. Dates are omitted because they have not been provided.
 
-The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. Scroll reveals run once per visit and respect reduced-motion settings.
+The education dates are calculated backward from the supplied 2024 college graduation and durations: college 2020–2024, senior high 2018–2020, high school 2014–2018, and elementary 2005–2014. When the timeline enters view, its connecting line fills through the four milestones in sequence, from left to right on desktop and top to bottom on mobile. The animation runs once per visit and respects reduced-motion settings.
 
 The Work section uses Previous and Next buttons to loop through projects horizontally. Inactive slides are excluded from keyboard navigation. With JavaScript disabled, both projects and all education stages remain visible.

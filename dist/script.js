@@ -4,19 +4,19 @@ const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
 const education = document.querySelector('.education-list');
 const stages = [...education.querySelectorAll('.education-entry')];
 if (!motionPreference.matches && 'IntersectionObserver' in window) {
-  education.classList.add('education-reveal');
-  stages.forEach((stage, index) => stage.style.setProperty('--reveal-order', index));
+  education.classList.add('timeline-animated');
+  stages.forEach((stage, index) => stage.style.setProperty('--timeline-step', index));
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
+        education.classList.add('timeline-started');
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12 });
-  stages.forEach(stage => observer.observe(stage));
+  }, { threshold: 0.05 });
+  observer.observe(education);
   motionPreference.addEventListener('change', () => {
-    education.classList.remove('education-reveal');
+    education.classList.remove('timeline-animated');
     observer.disconnect();
   }, { once: true });
 }

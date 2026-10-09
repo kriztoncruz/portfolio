@@ -41,9 +41,9 @@ html{scroll-padding-top:122px}
 .education{padding:48px 0}
 .education .section-heading{margin-bottom:26px}
 .education-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;list-style:none;margin:0;padding:0}
-.education-entry{position:relative;display:flex;flex-direction:column;min-width:0;gap:12px;padding-top:26px}
-.education-entry::before{content:"";position:absolute;top:0;left:0;width:10px;height:10px;border-radius:50%;background:var(--accent);z-index:1}
-.education-entry::after{content:"";position:absolute;top:4px;left:5px;right:-28px;height:1px;background:var(--line)}
+.education-entry{position:relative;min-width:0;padding-top:62px}
+.education-entry::before{content:"";position:absolute;top:32px;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);z-index:2}
+.education-entry::after{content:"";position:absolute;top:37px;left:6px;right:-28px;height:2px;background:var(--line)}
 .education-entry:last-child::after{display:none}
 .education-level{font-family:Consolas,"Courier New",monospace;font-size:11px;line-height:1.6;color:var(--accent);margin:0}
 .education-entry h3{font-size:17px;font-weight:500;letter-spacing:-.3px;line-height:1.4;margin:0 0 6px}
@@ -52,17 +52,27 @@ html{scroll-padding-top:122px}
 .education-school{display:flex;flex-direction:column;gap:12px;min-width:0}
 .school-logo{display:block;width:72px;height:56px;object-fit:contain;padding:0;background:transparent}
 .education-copy{min-width:0}
-@media(max-width:900px){.education-list{grid-template-columns:minmax(0,1fr);gap:24px}.education-entry{padding:0 0 0 28px;gap:10px}.education-entry::before{top:4px}.education-entry::after{top:9px;bottom:-28px;left:4px;right:auto;width:1px;height:auto}.education-school{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:start}}
+@media(max-width:900px){.education-list{grid-template-columns:minmax(0,1fr);gap:28px}.education-entry{padding:0 0 0 28px}.education-entry::before{top:5px}.education-entry::after{top:11px;bottom:-39px;left:5px;right:auto;width:2px;height:auto}.education-school{display:grid;grid-template-columns:72px minmax(0,1fr);gap:14px;align-items:start}}
 @media(max-width:767px){html{scroll-padding-top:102px}.education{padding:36px 0}nav{gap:16px;font-size:11px}}
 @media(max-width:480px){html{scroll-padding-top:150px}nav{flex-wrap:wrap;gap:8px 16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
 .school-logo-seal{width:56px;height:56px;clip-path:circle(49% at 50% 50%)}
-.education-years{display:block;margin-top:3px;color:var(--muted);font-size:10px}
+.education-date{position:absolute;top:0;left:0;margin:0;font-size:18px;font-weight:500;letter-spacing:-.4px;line-height:1.3;color:var(--accent)}
+.education-duration{color:var(--muted)}
+.timeline-milestone{display:flex;flex-direction:column;gap:12px}
+.timeline-progress{position:absolute;top:37px;left:6px;right:-28px;height:2px;background:var(--accent);transform-origin:left;z-index:1}
+.education-entry:last-child .timeline-progress{display:none}
+.timeline-animated .timeline-progress{transform:scaleX(0);transition:transform .65s linear;transition-delay:calc(var(--timeline-step) * .65s)}
+.timeline-animated .education-entry::before{background:var(--line);transition:background .15s;transition-delay:calc(var(--timeline-step) * .65s)}
+.timeline-animated .timeline-milestone{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--timeline-step) * .65s)}
+.timeline-started .timeline-progress{transform:scaleX(1)}
+.timeline-started .education-entry::before{background:var(--accent)}
+.timeline-started .timeline-milestone{opacity:1;transform:translateY(0)}
+@media(max-width:900px){.education-date{position:static;font-size:17px;margin-bottom:8px}.timeline-progress{top:11px;bottom:-39px;left:5px;right:auto;width:2px;height:auto;transform-origin:top}.timeline-animated .timeline-progress{transform:scaleY(0)}.timeline-started .timeline-progress{transform:scaleY(1)}}
+@media(prefers-reduced-motion:reduce){.timeline-animated .timeline-progress{transform:none}.timeline-animated .timeline-milestone{opacity:1;transform:none}.timeline-animated .education-entry::before{background:var(--accent)}}
 .education-entry .school-location{margin-bottom:8px;font-size:12px}
 .education-entry .education-graduated{margin-top:7px;color:var(--accent);font-size:12px}
-.education-reveal .education-entry{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--reveal-order) * 130ms)}
-.education-reveal .education-entry.is-visible{opacity:1;transform:translateY(0)}
 .work-controls{display:flex;align-items:center;justify-content:flex-end;gap:18px;margin:-6px 0 28px}
 .work-controls[hidden]{display:none}
 .work-controls p{margin:0;font-family:Consolas,"Courier New",monospace;font-size:11px;color:var(--muted);text-align:center;min-width:170px}
@@ -72,6 +82,4 @@ html{scroll-padding-top:122px}
 .carousel-ready .work-viewport{overflow:hidden;transition:height .4s ease}
 .carousel-ready .work-track{display:flex;align-items:flex-start;transition:transform .5s cubic-bezier(.22,.68,0,1)}
 .carousel-ready .project{flex:0 0 100%;min-width:0;margin:0;padding:0;border:0}
-@media(max-width:900px){.education-reveal .education-entry{transition-delay:0ms}}
 @media(max-width:480px){.work-controls{justify-content:space-between;gap:8px}.work-controls p{min-width:0;flex:1;font-size:10px}.carousel-button{padding:0 12px}}
-@media(prefers-reduced-motion:reduce){.education-reveal .education-entry{opacity:1;transform:none}}
