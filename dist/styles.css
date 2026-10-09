@@ -34,4 +34,18 @@
 @media(max-width:480px){.site-header{height:auto;min-height:78px;flex-wrap:wrap;gap:14px;padding:18px 0}nav{gap:18px}}
 .portrait-photo{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:50% 15%}
 footer a,footer button{min-height:44px;display:inline-flex;align-items:center}
+/* Opaque sticky navigation keeps scrolling content and section headings clear. */
+html{scroll-padding-top:122px}
+.site-header{position:sticky;top:0;z-index:10;background:var(--bg)}
+.skip-link{z-index:11}
+.education-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:90px;padding:28px 0;border-bottom:1px solid var(--line)}
+.education-entry:first-child{padding-top:0}
+.education-entry:last-child{padding-bottom:0;border-bottom:0}
+.education-level{font-family:Consolas,"Courier New",monospace;font-size:12px;line-height:1.7;color:var(--accent);margin:0}
+.education-entry h3{font-size:22px;font-weight:500;letter-spacing:-.5px;line-height:1.35;margin:0 0 10px}
+.education-entry div>p{font-size:14px;color:var(--muted);line-height:1.7;margin:0}
+.education-entry .education-detail{margin-top:4px}
+@media(max-width:1024px){.education-entry{gap:45px}}
+@media(max-width:767px){html{scroll-padding-top:102px}.education-entry{grid-template-columns:minmax(0,1fr);gap:12px}.education-entry h3{font-size:20px}nav{gap:16px;font-size:11px}}
+@media(max-width:480px){html{scroll-padding-top:150px}nav{flex-wrap:wrap;gap:8px 16px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
