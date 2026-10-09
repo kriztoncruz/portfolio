@@ -4,7 +4,7 @@ A dependency-free, responsive portfolio using native HTML, CSS, and JavaScript, 
 
 Run `node server.mjs` and open http://127.0.0.1:4173.
 
-Edit content in `dist/index.html` and the theme in `dist/styles.css`. Replace the `.portrait-slot` contents with your photograph when ready, preserving the accessible description and reserved dimensions. The project diagram illustrates document tracking; it is not a screenshot of DocTrack.
+Edit content in `dist/index.html` and the theme in `dist/styles.css`. The portrait is stored in `dist/assets/krizton-cruz.jpg`, optimized from the supplied photograph. CSS frames it for desktop and mobile while keeping the original photograph unchanged. The project diagram illustrates document tracking; it is not a screenshot of DocTrack.
 
 Contact: kriztoncruz@gmail.com.
 
