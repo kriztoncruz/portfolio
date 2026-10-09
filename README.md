@@ -13,3 +13,5 @@ Projects:
 - Automated HR Payslip System for the National Privacy Commission, developed using Power Automate with a Power Apps interface.
 
 Includes system-aware light/dark themes, a manual theme control, reduced-motion support, keyboard focus styles, semantic navigation, metadata, and a custom favicon.
+
+Work experience covers the current Administrative Officer role at the National Privacy Commission, eLGU administration for the Local Government of La Paz, Tarlac, and an internship at the Department of Information and Communications Technology. Dates are omitted because they have not been provided.

@@ -22,6 +22,18 @@
 .payslip-project{margin-top:56px;padding-top:56px;border-top:1px solid var(--line)}
 .payslip-visual{background:var(--panel-strong)}
 @media(max-width:640px){.project-flow{grid-template-columns:minmax(0,1fr);gap:22px;margin:28px 0}.project-flow li{padding:16px;text-align:left;gap:4px}.project-flow li+li::before{left:50%;top:-23px;width:0;height:22px;border-top:0;border-left:1px solid var(--accent)}.project-flow li+li::after{left:calc(50% - 2px);top:-7px;transform:rotate(135deg)}.payslip-project{margin-top:36px;padding-top:36px}}
+.experience-entry{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:90px;padding:32px 0;border-bottom:1px solid var(--line)}
+.experience-entry:first-child{padding-top:0}
+.experience-entry:last-child{border-bottom:0;padding-bottom:0}
+.experience-role h3{font-size:22px;font-weight:500;letter-spacing:-.5px;line-height:1.35;margin:0 0 10px;max-width:410px}
+.experience-role>p{font-size:14px;color:var(--muted);line-height:1.7;margin:0}
+.current-role{display:inline-block;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:12px}
+.experience-responsibilities{margin:0;padding-left:18px;font-size:14px;line-height:1.85;color:var(--muted)}
+.experience-responsibilities li+li{margin-top:10px}
+.experience-responsibilities li::marker{color:var(--accent)}
+@media(max-width:1024px){.experience-entry{gap:45px}}
+@media(max-width:767px){.experience-entry{grid-template-columns:minmax(0,1fr);gap:18px;padding:28px 0}.experience-role h3{font-size:20px;max-width:none}}
+@media(max-width:480px){.site-header{height:auto;min-height:78px;flex-wrap:wrap;gap:14px;padding:18px 0}nav{gap:18px}}
 .portrait-initials{color:var(--muted)}
 footer a,footer button{min-height:44px;display:inline-flex;align-items:center}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
