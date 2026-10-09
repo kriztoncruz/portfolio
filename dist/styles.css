@@ -132,12 +132,3 @@ h1 .hero-typed{color:inherit}
 .motion-toggle[hidden],.motion-toggle span[hidden]{display:none}
 @media(max-width:640px){.flow-art{justify-content:flex-start;height:26px}}
 @media(prefers-reduced-motion:reduce){.flow-token,.motion-toggle{display:none}}
-
-/* Layered pointer light, with no idle or ambient background animation. */
-body{isolation:isolate}
-.pointer-layer{position:fixed;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
-.pointer-glow{position:absolute;left:0;top:0;width:clamp(320px,65vw,640px);height:clamp(320px,65vw,640px);opacity:0;will-change:transform,opacity}
-.pointer-halo,.pointer-pulse{position:absolute;inset:0;display:block;border-radius:50%;pointer-events:none}
-.pointer-halo{background:radial-gradient(circle,rgb(208 235 216 / .15) 0%,rgb(172 215 185 / .13) 13%,rgb(139 197 165 / .065) 32%,rgb(89 154 141 / .025) 49%,transparent 70%)}
-.pointer-pulse{opacity:0;background:radial-gradient(circle,transparent 26%,rgb(172 215 185 / .025) 37%,rgb(172 215 185 / .11) 43%,transparent 54%);will-change:transform,opacity}
-@media(prefers-reduced-motion:reduce){.pointer-layer{display:none}}
