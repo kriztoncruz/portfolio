@@ -120,3 +120,15 @@ h1 .hero-typed{color:inherit}
 /* A solid, full-width background keeps the sticky navigation readable. */
 .site-header{background:var(--bg)}
 .site-header::before{content:"";position:absolute;inset:0;background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax);z-index:-1;pointer-events:none}
+
+/* The moving document connects real workflow stages; copy stays readable. */
+.project-visual{position:relative}
+.flow-art{display:flex;align-items:center;justify-content:center;height:26px;margin-bottom:4px}
+.flow-station{display:block;width:22px;height:26px;border:1px solid var(--line);border-radius:3px;opacity:.65}
+.project-flow li:last-child .flow-station{border-color:var(--accent-text);opacity:.35}
+.flow-token{position:absolute;left:0;top:0;width:22px;height:26px;border:1px solid var(--accent);border-radius:3px;background:var(--panel-strong);opacity:0;pointer-events:none;z-index:1;will-change:transform,opacity}
+.flow-token::before,.flow-token::after{content:"";position:absolute;left:5px;right:5px;height:1px;background:var(--accent)}
+.flow-token::before{top:9px}.flow-token::after{top:15px;right:8px}
+.motion-toggle[hidden],.motion-toggle span[hidden]{display:none}
+@media(max-width:640px){.flow-art{justify-content:flex-start;height:26px}}
+@media(prefers-reduced-motion:reduce){.flow-token,.motion-toggle{display:none}}

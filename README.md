@@ -36,3 +36,5 @@ Scroll reveals, including the hero and the full education timeline with school l
 The header uses a solid full-width dark background. Returning to the hero or a hidden tab restores a complete typed word if the loop was paused between phrases.
 
 The page background is the original solid dark color (#191e1a), with no gradient, glow, or pointer-reactive background animation.
+
+Project motion graphics adapt the HyperFrames motion vocabulary and shared motion principles to the live site using native Web Animations. A document travels through each real workflow stage, followed by a completion hold. Graphics run only for the visible active project, respect reduced motion, reset after leaving view, and have a manual pause control. The solid dark background is preserved. This is live HTML animation, not a rendered HyperFrames video.
