@@ -67,11 +67,11 @@ html{scroll-padding-top:122px}
 .education-entry:last-child .timeline-progress{display:none}
 .timeline-animated .timeline-progress{transform:scaleY(0);transition:transform .65s linear;transition-delay:calc(var(--timeline-step) * .65s)}
 .timeline-animated .education-entry::before{background:var(--line);transition:background .15s;transition-delay:calc(var(--timeline-step) * .65s)}
-.timeline-animated .timeline-milestone{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--timeline-step) * .65s)}
+.timeline-animated .timeline-milestone,.timeline-animated .school-logo{opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease;transition-delay:calc(var(--timeline-step) * .65s)}
 .timeline-started .timeline-progress{transform:scaleY(1)}
 .timeline-started .education-entry::before{background:var(--accent)}
-.timeline-started .timeline-milestone{opacity:1;transform:translateY(0)}
-@media(prefers-reduced-motion:reduce){.timeline-animated .timeline-progress{transform:none}.timeline-animated .timeline-milestone{opacity:1;transform:none}.timeline-animated .education-entry::before{background:var(--accent)}}
+.timeline-started .timeline-milestone,.timeline-started .school-logo{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.timeline-animated .timeline-progress{transform:none}.timeline-animated .timeline-milestone,.timeline-animated .school-logo{opacity:1;transform:none}.timeline-animated .education-entry::before{background:var(--accent)}}
 .education-entry .school-location{margin-bottom:8px;font-size:12px}
 .education-entry .education-graduated{margin-top:7px;color:var(--accent);font-size:12px}
 .work-controls{display:flex;align-items:center;justify-content:flex-end;gap:12px;margin:-6px 0 28px}
@@ -89,10 +89,12 @@ html{scroll-padding-top:122px}
 .project-dot::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s,transform .2s}
 .project-dot[aria-current="true"]::before{background:var(--accent);transform:scale(1.35)}
 .project-dot:hover::before{background:var(--muted)}
-.wordmark{display:block;perspective:360px;line-height:1.2;width:95px;height:1.2em;--cube-depth:.6em}
-.wordmark-cube{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transform:translateZ(calc(-1 * var(--cube-depth)))}
-.wordmark-face{position:absolute;inset:0;display:flex;align-items:center;background:var(--bg);backface-visibility:hidden;transform:rotateX(calc(var(--face) * 90deg)) translateZ(var(--cube-depth))}
-@media(prefers-reduced-motion:no-preference){.wordmark-cube{animation:wordmark-roll 16s infinite}@keyframes wordmark-roll{0%,18%{transform:translateZ(calc(-1 * var(--cube-depth))) rotateX(0deg)}25%,43%{transform:translateZ(calc(-1 * var(--cube-depth))) rotateX(-90deg)}50%,68%{transform:translateZ(calc(-1 * var(--cube-depth))) rotateX(-180deg)}75%,93%{transform:translateZ(calc(-1 * var(--cube-depth))) rotateX(-270deg)}100%{transform:translateZ(calc(-1 * var(--cube-depth))) rotateX(-360deg)}}}
+.wordmark{display:block;line-height:1.2}
+.wordmark-glitch{display:inline-block;position:relative}
+.wordmark-glitch::before,.wordmark-glitch::after{content:attr(data-text);position:absolute;inset:0;opacity:0;pointer-events:none}
+.wordmark-glitch::before{color:var(--accent);clip-path:inset(0 0 55% 0)}
+.wordmark-glitch::after{color:var(--text);clip-path:inset(55% 0 0 0)}
+@media(prefers-reduced-motion:no-preference){.wordmark-glitch::before{animation:wordmark-glitch-top 7s steps(1,end) infinite}.wordmark-glitch::after{animation:wordmark-glitch-bottom 7s steps(1,end) infinite}@keyframes wordmark-glitch-top{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(-2px)}93%{opacity:1;transform:translateX(2px)}94%{opacity:1;transform:translateX(-1px)}95%{opacity:1;transform:translateX(1px)}}@keyframes wordmark-glitch-bottom{0%,91%,96%,100%{opacity:0;transform:none}92%{opacity:1;transform:translateX(2px)}93%{opacity:1;transform:translateX(-1px)}94%{opacity:1;transform:translateX(1px)}95%{opacity:1;transform:translateX(-2px)}}}
 nav .nav-contact{border-bottom:0}
 .site-header nav a{position:relative}
 .site-header nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}

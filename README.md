@@ -26,4 +26,4 @@ Larger school logos sit to the right of their timeline entries on desktop and mo
 
 Contact icons: Tabler Icons 3.49.0 (MIT), vendored inline from the official @tabler/icons package. Viber uses the phone-call icon. License: dist/licenses/tabler-icons.txt. Icon-only links include accessible names and hover titles.
 
-The wordmark rolls forward as four CSS 3D faces. Project arrows always move the slides in their indicated direction, including wraps; queued clicks stay ordered. Project count dots are generated from the project list and can select a project. Reduced motion disables both animations.
+The wordmark uses a brief, subtle glitch every seven seconds. School logos reveal in sync with their education timeline entries. Project arrows always move the slides in their indicated direction, including wraps; queued clicks stay ordered. Project count dots are generated from the project list and can select a project. Reduced motion disables both animations.
